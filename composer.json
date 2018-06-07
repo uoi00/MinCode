@@ -1,0 +1,16 @@
+{
+    "name": "uoi00/mincode",
+    "description": "this is study freamwork",
+    "type": "project",
+    "license": "none",
+    "authors": [
+        {
+            "name": "uoi00",
+            "email": "uoi00@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "jenssegers/blade": "dev-master"
+    }
+}
