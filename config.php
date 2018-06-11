@@ -8,6 +8,10 @@
 #################
 //是否开启调试模式
 define("DEBUG",true);
+//默认控制器
+define("DFCTR",'Index');
+//默认方法
+define("DDFUN","index");
 
 #################
 ##  路径配置  ###

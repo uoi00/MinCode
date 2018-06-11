@@ -4,7 +4,7 @@
  */
 
 namespace Core;
-use Jenssegers\Blade\Blade;
+
 
 class View{
 
