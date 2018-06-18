@@ -6,7 +6,7 @@ namespace App\Controller;
 class Index{
 
     public function index(){
-        echo 'test ok!';
+        var_dump($_GET);
     }
     public function test(){
         echo 'two test';
