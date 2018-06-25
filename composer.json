@@ -2,7 +2,7 @@
     "name": "uoi00/mincode",
     "description": "this is study freamwork",
     "type": "project",
-    "license": "none",
+    "license": "MPL",
     "authors": [
         {
             "name": "uoi00",
@@ -11,7 +11,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "topthink/think-orm": "dev-master"
     },
     "autoload": {
         "psr-4": {

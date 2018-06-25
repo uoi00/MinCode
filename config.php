@@ -12,6 +12,8 @@ define("DEBUG",true);
 define("DFCTR",'Index');
 //默认方法
 define("DDFUN","index");
+//是否使用SQL数据库(MySQL,mssql,Oracle等)
+define("ISDB",true);
 
 #################
 ##  路径配置  ###
@@ -26,6 +28,14 @@ define("PUBLIC",ROOT.'public'.DS);
 define("URL_ROOT",dirname($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']));
 
 ###################
-##  数据库配置  ###
+##   模板配置   ###
 ###################
-
+//模版文件后缀
+define("TMP_EXT",'.html');
+//模板路径
+define("TMP_PATH",ROOT.'templates');
+//缓存路径
+// 不需要缓存些false 其他写缓存存放路径
+//twig引擎的模版缓存有问题 不是很灵活 在测试的时候最好选择false 正式运行的时候写缓存路径
+//define("TMP_CACHE",ROOT.'cache'.DS.'template');
+define("TMP_CACHE",false);
