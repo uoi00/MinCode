@@ -16,7 +16,9 @@ class Route
     {
         //获取路由 解析路由
         if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] != '/') {
-            $parmstr = substr($_SERVER['REQUEST_URI'], strlen(dirname($_SERVER['PHP_SELF'])) + 1);
+            $file = dirname($_SERVER['PHP_SELF']);
+            if ($file == '/') $parmstr = substr($_SERVER['REQUEST_URI'], strlen($file) );
+            else $parmstr = substr($_SERVER['REQUEST_URI'], strlen($file) + 1);
             $parm = explode('/', $parmstr);
             $this->ctr = $parm[0] ? $parm[0] : 'Index';
             if (!empty($parm[1])) $this->fun = $parm[1];
