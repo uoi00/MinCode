@@ -8,7 +8,7 @@ use Core\DB\DB;
 
 class Index{
 
-    public function index($name,$age=null){
+    public function index(){
         dd(url('test/test'));
         DB::$isSqlLog = true;
         DB::table('test')->where(['id'=>121])->get();
