@@ -17,7 +17,7 @@ define("ISDB",true);
 //系统斜线
 define("DS",DIRECTORY_SEPARATOR);
 //框架根目录
-define("ROOT",dirname(__FILE__).DS);
+define("ROOT",dirname(__FILE__).DS.'..'.DS);
 //公共目录
 define("PUBLIC",ROOT.'public'.DS);
 //URL根目录
