@@ -3,20 +3,16 @@
  * Index
  */
 namespace App\Controller;
+
+use Core\DB\DB;
+
 class Index{
 
     public function index(){
-        $data = [
-            'name' => 'aaaa',
-            'num' => 4,
-            'arr' => ['a','b','c'],
-            'arrk' => ['a'=> 11, 'b'=> 22, 'c' => 33],
-            'aa' => [
-                ['aa','bb'],
-                ['xx','zz'],
-            ],
-        ];
-        display('index',$data);
+        dd(url('test/test'));
+        DB::$isSqlLog = true;
+        DB::table('test')->where(['id'=>121])->get();
+        DB::getSql();
     }
     public function test(){
         echo 'two test';

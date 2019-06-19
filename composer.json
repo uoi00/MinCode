@@ -11,8 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "twig/twig": "~1.0",
-        "topthink/think-orm": "dev-master"
     },
     "autoload": {
         "psr-4": {
