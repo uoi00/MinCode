@@ -14,14 +14,14 @@ class Query
 
     /**
      * 获取数据库连接
-     * @return null
+     * @return \PDO|null
      */
     private static function getConnect()
     {
         if (self::$dbconnect == null) {
             self::$dbconnect = Connect::getDB();
         }
-        return self::$dbconnect;
+        return self::$dbconnect->db;
     }
 
     /**
@@ -306,9 +306,10 @@ class Query
     /**
      * 插入数据
      * @param array $data 要插入的数据 一维数组插入一条 二维插入多条
+     * @param bool $zz 是否返回自增id
      * @return false|int 插入结果 失败|插入的数目
      */
-    public function insert(array $data)
+    public function insert(array $data,bool $zz=false)
     {
         $sql = 'insert into ' . $this->table;
         if (isset($data[0]) && is_array($data[0])) {
@@ -341,6 +342,7 @@ class Query
         }
         $zj = self::getConnect()->prepare($sql);
         $zid = $zj->execute($this->para);
+        if ($zid && $zz) return self::getConnect()->lastInsertId();
         return $zid;
     }
 
@@ -409,7 +411,7 @@ class Query
         $zj = self::getConnect()->prepare($sql);
         $zid = $zj->execute($para);
         if ($model === 'select') {
-            $zsd = $zj->fetchAll();
+            $zsd = $zj->fetchAll(\PDO::FETCH_CLASS);
             return $zsd;
         } else return $zid;
     }

@@ -19,4 +19,6 @@ return [
     'dsn'            => '',
     // 数据库连接参数
     'params'         => [],
+    //字符集
+    'charset'        => 'utf-8',
 ];

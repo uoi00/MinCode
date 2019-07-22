@@ -21,6 +21,10 @@ require  '../app/function.php';
 //载入路由文件
 require  '../core/Route.php';
 
-//进入路由
-new Route();
+header("Access-Control-Allow-Origin: *");
+date_default_timezone_set('PRC'); //设置中国时区
 
+//进入路由
+$rst = new \Core\Route();
+if (is_array($rst->rst) || is_object($rst->rst)) echo json_encode($rst->rst);
+else echo $rst->rst;

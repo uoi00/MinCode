@@ -2,13 +2,14 @@
 /**
  * 路由解析类
  */
-
+namespace Core;
 use App\Controller;
 
 class Route
 {
     /** @var null|array 参数  */
     private $parm = null;
+    public $rst = null;
     public function __construct()
     {
         //获取路由 解析路由
@@ -19,7 +20,7 @@ class Route
         }else $parmstr = '';
         //执行路由
         $route = explode('?',$parmstr);
-        $this->doRoute($route[0]);
+        $this->rst = $this->doRoute($route[0]);
     }
 
     /**
@@ -57,24 +58,21 @@ class Route
      * @param string $fun 方法名
      * @param array $para 参数
      * @return mixed 执行结果
-     * @throws Exception null
+     * @throws \ReflectionException
      */
     private static function runFun(string $fun,array $para=[]){
         $f = explode('@',$fun);
-        if (empty($f[1])) throw new Exception('错误的方法'.$fun);
-        $className = new ReflectionClass('App\Controller\\'.$f[0]);
+        if (empty($f[1])) throw new \Exception('错误的方法'.$fun);
+        $className = new \ReflectionClass('App\Controller\\'.$f[0]);
         $obj = $className->newInstanceArgs();
         return call_user_func_array([$obj,$f[1]],$para);
-//        $obj = new $f[0]();
-//        if (empty($para)) return call_user_func($obj->$para[1]);
-//        else
-//            return $obj->$f[1]();
     }
 
     /**
      * 执行路由
      * @param $route string 路由路径
      * @throws null
+     * @return mixed
      */
     private function doRoute(string $route)
     {
@@ -110,7 +108,7 @@ class Route
             self::runRroup($routes[3],true);
             //检测路由参数
             if ($route == $setRoute){
-                self::runFun($routes[1]);
+                return self::runFun($routes[1]);
             }
             else{
                 $para = substr($route,strlen($setRoute)+1); //获取请求路由的参数部分
@@ -122,7 +120,7 @@ class Route
                         else err404(); //如果不是可选参数
                     }
                 }
-                self::runFun($routes[1],$para);
+                return self::runFun($routes[1],$para);
             }
         }
     }
