@@ -356,7 +356,7 @@ class Query
     {
         $sql = 'update ' . $this->table . ' set ';
         foreach ($data as $k => $v) {
-            if (empty($v) || is_int($k) || is_array($v) || is_object($v)) throw new Exception('错误的修改数据');
+            if (!isset($v) || is_int($k) || is_array($v) || is_object($v)) throw new Exception('错误的修改数据');
             $sql .= '`' . $k . '`=?,';
             $this->para[] = $v;
         }

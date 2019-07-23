@@ -22,3 +22,12 @@ define("ROOT",dirname(__FILE__).DS.'..'.DS);
 define("PUBLIC",ROOT.'public'.DS);
 //URL根目录
 define("URL_ROOT",dirname($_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']));
+###################
+#### Redis配置 ####
+###################
+//ip
+define('RDS_IP','127.0.0.1');
+//端口
+define('RDS_PORD','6379');
+//密码
+define('RDS_PWD','');
